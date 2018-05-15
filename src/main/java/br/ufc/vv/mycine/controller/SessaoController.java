@@ -40,4 +40,10 @@ public class SessaoController {
 		return "redirect:/listar/";
 	}
 	
+	@RequestMapping(path="/deletar", method=RequestMethod.POST)
+	public String deletarSessao(Sessao sessao){
+		service.save(sessao);
+		return "redirect:/listar/";
+	}
+	
 }
