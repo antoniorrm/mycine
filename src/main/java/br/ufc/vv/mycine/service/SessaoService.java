@@ -14,6 +14,10 @@ public class SessaoService {
 	@Autowired
 	private SessaoRepository repository;
 	
+	public Sessao save(Sessao sessao) {
+        return repository.saveAndFlush(sessao);
+    }
+	
 	public List<Sessao> findAll() {
         return repository.findAll();
     }
@@ -24,11 +28,7 @@ public class SessaoService {
     		return optional.get();
     	else
     		return null;
-    }
-     
-    public Sessao save(Sessao sessao) {
-        return repository.saveAndFlush(sessao);
-    }
+    }       
      
     public void delete(Long id) {
         repository.deleteById(id);

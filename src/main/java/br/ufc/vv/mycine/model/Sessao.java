@@ -140,6 +140,10 @@ public class Sessao {
 //			return false;
 		return true;
 	}
+	public void setSala(Sala sala) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	
 }
