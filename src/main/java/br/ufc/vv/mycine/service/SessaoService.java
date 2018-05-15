@@ -33,5 +33,13 @@ public class SessaoService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+    
+    public Sessao atualiza(Sessao sessao) {
+        return repository.saveAndFlush(sessao);
+    }
 
+    public Sessao getSessao(Long id) {
+    	return repository.getOne(id);
+    }
+    
 }
