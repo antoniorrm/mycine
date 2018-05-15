@@ -3,6 +3,7 @@
 	xmlns="http://www.w3.org/1999/xhtml" 
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	
 >
 
 	<head>
@@ -19,15 +20,11 @@
 			
 			<div class="row">
 			
-				 <div th:if="${erro}" class="row">
-  					 <div class="chip red white-text">
-   				 		<span th:text="${erro}"></span>
- 				 	 </div>
-                 </div>
+				 
                  
-				<form action="/sessoes/salvar" method="POST">
+				<form action="/sessoes/salvar" th:object="${sessao}" method="POST">
 					<div class="input-field col s0">
-						<input placeholder="Nome da sessao" id="sessao" name="nomeSessao" type="text" class="validate"/>
+						<input placeholder="Nome da sessao" id="nomeSessao" name="nomeSessao" type="text" class="validate"/>
 						<label for="first_name">Nome da Sessao</label>
 					</div>
 					<div class="col s8">
