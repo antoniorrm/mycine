@@ -22,7 +22,7 @@ public class SessaoController {
 	
 	@RequestMapping(path="/")
 	public String index() {
-		return "index";
+		return "sessao";
 	}
 
 	@RequestMapping(path="/listar")
