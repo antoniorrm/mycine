@@ -3,6 +3,7 @@ package br.ufc.vv.mycine.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import br.ufc.vv.mycine.model.Sessao;
 import br.ufc.vv.mycine.service.SessaoService;
@@ -12,11 +13,39 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/sessoes")
+@RequestMapping(path="/sessao/")
 public class SessaoController {
-
+	
     @Autowired
     private SessaoService sService;
+	
+	@RequestMapping(path="/")
+	public String index() {
+		return "sessao";
+	}
+
+	@RequestMapping(path="/listar")
+	public ModelAndView listarSessao(){
+		ModelAndView model = new ModelAndView("sessoes");
+		List<Sessao> sessoes= sService.todas();
+		model.addObject("jogadores", sessoes);
+		return model;
+	}
+	
+	
+	@RequestMapping(path="/salvar", method=RequestMethod.POST)
+	public String salvarSessao(Sessao sessao){
+		sService.addSessao(sessao);
+		return "redirect:/listar/";
+	}
+	
+	@RequestMapping(path="/deletar", method=RequestMethod.POST)
+	public String deletarSessao(Sessao sessao){
+		sService.removerSessao(sessao.getId());
+		return "redirect:/listar/";
+	}
+
+
 
     @RequestMapping(path= "/listar", method = RequestMethod.GET)
     public List<Sessao> todas(){
